@@ -1,15 +1,19 @@
 const mongoose = require('mongoose');
 
 const gearSchema = new mongoose.Schema ({
-    armorWeight, weaponWeight: {
+    armorWeight: {
+        type: String,
+        enum: ['light', 'medium', 'heavy']
+    },
+    weaponWeight: {
         type: String,
         enum: ['light', 'medium', 'heavy']
     }
 })
 
 const commentSchema = new mongoose.Schema ({
-    text: String,
     userId: {type: Schema.Types.ObjectId, ref: 'User'},
+    text: String,
     userName: String
 })
 
