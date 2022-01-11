@@ -7,15 +7,15 @@
           <tr>
             <th>Build Name: </th>
             <th>Role: </th>
-            <th>Created by: </th>
+            <!-- <th>Created by: </th> -->
           </tr>
         </thead>
         <tbody>
           <% builds.forEach(b => { %>
             <tr>
                 <td><%= b.buildName %></td>
-                <td><%= b.role %></td>
-                <td><%# b.userId.name %></td>
+                <td><%= b.role.replace(/^[a-z]/, function(m){ return m.toUpperCase() }); %></td>
+                <!-- <td><%# b.user %></td> -->
                 <td><a href="/builds/<%= b._id %>">View</a></td>
               </tr>
           <% }) %>

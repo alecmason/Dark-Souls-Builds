@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
 
-const gearSchema = new mongoose.Schema ({
+const gearSchema = new mongoose.Schema({
     armorWeight: {
         type: String,
         enum: ['light', 'medium', 'heavy']
@@ -12,14 +11,14 @@ const gearSchema = new mongoose.Schema ({
     }
 })
 
-const commentSchema = new mongoose.Schema ({
-    userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+const commentSchema = new mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     text: String,
-    userName: String
-})
+    // userName: String // user name from User model
+}, {timestamps: true})
 
-const buildSchema = new mongoose.Schema ({
-    userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+const buildSchema = new mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     buildName: String,
     role: {
         type: String,
@@ -36,7 +35,6 @@ const buildSchema = new mongoose.Schema ({
     ranged: {
         type: Boolean,
         default: false
-
     },
     gear: gearSchema,
     definition: String,

@@ -33,8 +33,22 @@ table {
   border: double;
 }
 
+td {
+  padding: 5px;
+}
+
 #show-page {
   background-color: rgb(17, 17, 17);
   padding: 10px;
   border: double;
+}
+
+img {
+  width: 31px;
+  height: 31px;
+}
+
+#comment {
+  border: double;
+  padding: 5px;
 }

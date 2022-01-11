@@ -1,52 +1,79 @@
 <%- include('../partials/header') %>
 
-<section id="show-page">
-    <div>Build Name:</div>
-    <dir>
-        <%= build.buildName %>
-    </dir>
-    <div>Role:</div>
-    <dir>
-        <%= build.role %>
-    </dir>
-    <div>Melee:</div>
-    <dir>
-        <%= build.melee %>
-    </dir>
-    <div>Spell Caster:</div>
-    <dir>
-        <%= build.spellCaster %>
-    </dir>
-    <div>Ranged:</div>
-    <dir>
-        <%= build.ranged %>
-    </dir>
-    <div>Armor Weight:</div>
-    <dir>
-        <%= build.armorWeight %>
-    </dir>
-    <div>Weapon Weight:</div>
-    <dir>
-        <%= build.weaponWeight %>
-    </dir>
-    <div>Definition</div>
-    <dir>
-        <%= build.definition%>
-    </dir>
+    <section id="show-page">
+        <div>Build Name:</div>
+        <dir>
+            <%= build.buildName %>
+        </dir>
+        <div>Role:</div>
+        <dir>
+            <%= build.role.replace(/^[a-z]/, function(m){ return m.toUpperCase() }); %>
+        </dir>
+        <div>Melee:</div>
+        <dir>
+            <% if (build.melee) { %>
+                <p>Yes</p>
+                <% } else { %>
+                    <p>No</p>
+                    <% } %>
+        </dir>
+        <div>Spell Caster:</div>
+        <dir>
+            <% if (build.spellCaster) { %>
+                <p>Yes</p>
+                <% } else { %>
+                    <p>No</p>
+                    <% } %>
+        </dir>
+        <div>Ranged:</div>
+        <dir>
+            <% if (build.ranged) { %>
+                <p>Yes</p>
+                <% } else { %>
+                    <p>No</p>
+                    <% } %>
+        </dir>
+        <div>Armor Weight:</div>
+        <dir>
+            <%= build.gear.armorWeight.replace(/^[a-z]/, function(m){ return m.toUpperCase() });  %>
+        </dir>
+        <div>Weapon Weight:</div>
+        <dir>
+            <%= build.gear.weaponWeight.replace(/^[a-z]/, function(m){ return m.toUpperCase() }); %>
+        </dir>
+        <div>Definition</div>
+        <dir>
+            <%= build.definition%>
+        </dir>
 
-    <!-- <div>Comments</div>
-    <dir>
-        <%# build.comments.forEach(function(c) { %>
-            <tr>
-                <td>
-                    Airport: <%# d.airport %>
-                </td>
-                <td>
-                    Arrival: <%# d.arrival %>
-                </td>
-                <br />
-            </tr>
-            <%# }); %>
-    </dir> -->
+        <div>Comments</div>
+        <dir>
+            <% if (build.comments){ %>
+                <% build.comments.forEach(function(c) { %>
+                    <tr>
+                        <div id="comment">
+                            <td id="comments-td">
+                                <%= c.createdAt.toLocaleDateString() %>:
+                                    <%= c.text %>
+                            </td>
+                            <% if (user) { %> 
+                            <br><button>Delete</button>
+                            <% } %> 
+                        </div>
+             
+                    </tr>
+                    <br>
+                    <% }); %>
+                        <% } else { %>
+                            <h5>No Comments Yet</h5>
+                            <% } %>
 
-<%- include('../partials/footer') %>
+        </dir>
+
+        <form id="add-comment-form" method="POST" action="/builds/<%= build._id %>/comments">
+            <label>Comment:</label>
+            <textarea name="text" required></textarea>
+            <input type="submit" value="Add Comment">
+        </form>
+
+        <%- include('../partials/footer') %>

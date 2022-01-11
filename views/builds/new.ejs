@@ -1,10 +1,10 @@
 <%- include('../partials/header') %>
 
-<form action="/builds" method="POST">
-    <h2>Create Your Build</h2>
-    <label>Build Name:
-        <input type="text" name="buildName" required>
-    </label> 
+    <form action="/builds" method="POST">
+        <h2>Create Your Build</h2>
+        <label>Build Name:
+            <input type="text" name="buildName" required>
+        </label>
         <label>Role:
             <select name="role">
                 <option value="tank">Tank</option>
@@ -23,23 +23,22 @@
         </label><br>
         <h3>Gear</h3>
         <label>Armor Weight:
-            <select name="armorWeight">
+            <select name="gear.armorWeight">
                 <option value="light">Light</option>
                 <option value="medium">Medium</option>
                 <option value="heavy">Heavy</option>
             </select>
         </label><br>
         <label>Weapon Weight:
-            <select name="weaponWeight">
+            <select name="gear.weaponWeight">
                 <option value="light">Light</option>
                 <option value="medium">Medium</option>
                 <option value="heavy">Heavy</option>
             </select>
         </label><br>
-        <label>Definition
-            <input type="text" name="definition">
-        </label><br>
+        <label>Definition:</label><br>
+        <textarea name="definition" id="definition" cols="60" rows="10"></textarea><br>
         <input type="submit" value="Create Build">
-</form>
+    </form>
 
-<%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>

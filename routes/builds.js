@@ -1,7 +1,6 @@
 var router = require('express').Router();
 var buildsCtrl = require('../controllers/builds');
 
-// GET /students
 router.get('/builds', buildsCtrl.index);
 router.get('/builds/new', isLoggedIn, buildsCtrl.new);
 router.post('/builds', isLoggedIn, buildsCtrl.create);
