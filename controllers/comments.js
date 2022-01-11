@@ -2,30 +2,34 @@ const Build = require('../models/build')
 
 module.exports = {
     create: createComment,
-    // delete: deleteComment
+    delete: deleteComment
 }
 
 function createComment(req,res) {
-    console.log(req.params.id, " req.params.id")
-	console.log(req.body, " req.body aka the contents of the form")
-
-	// Trying to add a review to a Movie
-	// To find the movie first!
 	Build.findById(req.params.id, function(err, build){
-
-		// Then we need to add the review to the movie.reviews array
 		build.comments.push(req.body);
-		// The above is mutating a document
-		// The Database (mongodb) doesn't know we mutated
-		// the document
-		console.log(build, " <- this is build(doc), ")
-		// So have to .save() the document in order to update mongodb
 		build.save(function(err){
-			// redirect the user back to the show page
-
 			res.redirect(`/builds/${build._id}`)
 		})
-	
 	})
 }
-// function deleteComment(req,res){}
+
+// function deleteComment(req, res) {
+//     Build.findById(req.params._id, function(err, build) {
+//         build.comments.pull({_id: req.params._id});
+//         build.save(function (err) {
+//             res.redirect(`/builds/${build._id}`);
+//             });
+//     })
+
+// }
+
+function deleteComment(req,res){
+    Build.findOne({'comments._id': req.params.id}, function(err, build){
+        const commentSubdoc = build.comments.id(req.params.id);
+        commentSubdoc.remove();
+        build.save(function(err){
+            res.redirect(`/builds/${build._id}`);
+        })
+    })
+}

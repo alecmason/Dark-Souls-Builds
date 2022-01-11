@@ -52,3 +52,7 @@ img {
   border: double;
   padding: 5px;
 }
+
+#delete-comment-btn {
+  border: none;
+}

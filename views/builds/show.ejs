@@ -35,7 +35,7 @@
         </dir>
         <div>Armor Weight:</div>
         <dir>
-            <%= build.gear.armorWeight.replace(/^[a-z]/, function(m){ return m.toUpperCase() });  %>
+            <%= build.gear.armorWeight.replace(/^[a-z]/, function(m){ return m.toUpperCase() }); %>
         </dir>
         <div>Weapon Weight:</div>
         <dir>
@@ -56,11 +56,15 @@
                                 <%= c.createdAt.toLocaleDateString() %>:
                                     <%= c.text %>
                             </td>
-                            <% if (user) { %> 
-                            <br><button>Delete</button>
-                            <% } %> 
+                            <% if (user) { %>
+                                <form id="delete-comment-btn" action="/builds/<%= build._id %>/comments/<%= c._id %>?_method=DELETE"
+                                    method="POST">
+                                    <button type="submit">Delete</button>
+                                </form>
+
+                                <% } %>
                         </div>
-             
+
                     </tr>
                     <br>
                     <% }); %>
