@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+
+
+<h2>All Builds</h2>
+    <table>
+        <thead>
+          <tr>
+            <th>Build Name: </th>
+            <th>Role: </th>
+            <th>Created by: </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% builds.forEach(b => { %>
+            <tr>
+                <td><%= b.buildName %></td>
+                <td><%= b.role %></td>
+                <td><%# b.userId.name %></td>
+                <td><a href="/builds/<%= b._id %>">View</a></td>
+              </tr>
+          <% }) %>
+        </tbody>
+    </table>
+      
+<%- include('../partials/footer') %>

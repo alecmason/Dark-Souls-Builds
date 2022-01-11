@@ -1,0 +1,45 @@
+<%- include('../partials/header') %>
+
+<h2>Create Your Build</h2>
+<form action="/builds" method="POST">
+    <label>Build Name:
+        <input type="text" name="buildName" required>
+    </label> 
+        <label>Role:
+            <select name="role">
+                <option value="tank">Tank</option>
+                <option value="spell caster">Spell Caster</option>
+                <option value="ranged">Ranged</option>
+            </select>
+        </label><br>
+        <label>Melee
+            <input type="checkbox" name="melee">
+        </label><br>
+        <label>Spell Caster
+            <input type="checkbox" name="spellCaster">
+        </label><br>
+        <label>Ranged
+            <input type="checkbox" name="ranged">
+        </label><br>
+        <h3>Gear</h3>
+        <label>Armor Weight:
+            <select name="armorWeight">
+                <option value="light">Light</option>
+                <option value="medium">Medium</option>
+                <option value="heavy">Heavy</option>
+            </select>
+        </label><br>
+        <label>Weapon Weight:
+            <select name="weaponWeight">
+                <option value="light">Light</option>
+                <option value="medium">Medium</option>
+                <option value="heavy">Heavy</option>
+            </select>
+        </label><br>
+        <label>Definition
+            <input type="text" name="definition">
+        </label><br>
+        <input type="submit" value="Create Build">
+</form>
+
+<%- include('../partials/footer') %>
