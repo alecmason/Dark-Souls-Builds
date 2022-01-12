@@ -27,21 +27,16 @@ function create(req, res) {
 
     let b = req.body;
     for (let key in b) {
-        // if key in b = 'on' then change to true
         if (b[key] === 'on') {
             b[key] = true;
         }
     }
-    // make const build out of b not req.body
+
     const build = new Build(b);
-    build.user = req.user._id;
+    build.userId = req.user._id;
 
     build.save();
-    // if (err) return render('builds/new');
-    // res.redirect(`/builds/${build._id}`); // <- send to the details page of the newly created build
-    console.log(build, '<-- build')
-
-    res.redirect(`/builds`) // <- for now, send to list of all builds
+    res.redirect(`/builds`) 
 }
 
 function show(req, res) {
