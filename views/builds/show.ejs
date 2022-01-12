@@ -50,34 +50,44 @@
         <dir>
             <% if (build.comments){ %>
                 <% build.comments.forEach(function(c) { %>
-                    <tr>
-                        <div id="comment">
-                            <td id="comments-td">
-                                <%= c.createdAt.toLocaleDateString() %>:
+
+                    <% if (!user) { %>
+                        <tr>
+                            <div id="comment">
+                                <td id="comments-td">
+                                    <%= c.createdAt.toLocaleDateString() %>:
                                     <%= c.text %>
-                            </td>
-                            <% if (c.userId.equals(user._id)) { %>
+                                </td>
+                    <% } else if (c.userId.equals(user._id)) {%>
+                            <div id="comment">
+                                <td id="comments-td">
+                                    <%= c.createdAt.toLocaleDateString() %>:
+                                    <%= c.text %>
+                                </td>
                                 <form id="edit-comment-form"
-                                    action="/builds/<%= build._id %>/comments/<%= c._id %>?_method=PUT" method="POST">
+                                    action="/builds/<%= build._id %>/comments/<%= c._id %>?_method=PUT"
+                                    method="POST">
                                     <textarea name="text" required></textarea><br>
                                     <input type="submit" value="Edit Comment">
                                 </form>
                                 <form id="delete-comment-btn"
-                                    action="/builds/<%= build._id %>/comments/<%= c._id %>?_method=DELETE"
-                                    method="POST">
+                                <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
                                     <button type="submit">Delete</button>
                                 </form>
-
-                                <% } %>
-                        </div>
-
-                    </tr>
-                    <br>
-                    <% }); %>
-                        <% } else { %>
-                            <h5>No Comments Yet</h5>
+                    <% } else if (user) {%>
+                        <div id="comment">
+                            <td id="comments-td">
+                                <%= c.createdAt.toLocaleDateString() %>:
+                                <%= c.text %>
+                            </td>
                             <% } %>
-
+                        </div>
+                        </tr>
+                        <br>
+                        <% }); %>
+                            <% } else { %>
+                                <h5>No Comments Yet</h5>
+                                <% } %>
         </dir>
 
         <form id="add-comment-form" method="POST" action="/builds/<%= build._id %>/comments">
