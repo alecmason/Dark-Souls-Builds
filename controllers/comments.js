@@ -8,12 +8,17 @@ module.exports = {
 
 function createComment(req, res) {
     Build.findById(req.params.id, function (err, build) {
-        req.body.userId = req.user._id;
-        req.body.userName = req.user.name;
-        build.comments.push(req.body);
-        build.save(function (err) {
+        if (!req.user) {
             res.redirect(`/builds/${build._id}`)
-        })
+        } else {
+            req.body.userId = req.user._id;
+            req.body.userName = req.user.name;
+            build.comments.push(req.body);
+            build.save(function (err) {
+                res.redirect(`/builds/${build._id}`)
+            })
+        }
+
     })
 }
 
