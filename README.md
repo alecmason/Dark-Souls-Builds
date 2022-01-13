@@ -1,6 +1,8 @@
 # Alec Jones" Project 2 - Dark Souls Inspired Build Database
 
-The purpose of the web applicatino is to be a database for RPG "builds" inspired by the video game series Dark Souls.
+The purpose of the web application is to be a database for RPG "builds" inspired by the video game series Dark Souls.
+
+[Check it out here!](https://project-2-dark-souls-builds.herokuapp.com/builds)
 
 Technology used: ExpressJS, NodeJs, Mongoose, MongoDB, MongoDB Atlas, Google People API, OAuth, Passport
 
