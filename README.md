@@ -2,7 +2,7 @@
 
 The purpose of the web applicatino is to be a database for RPG "builds" inspired by the video game series Dark Souls.
 
-Technology used: ExpressJS, NodeJs, Mongoose, MongoDB, Google People API, OAuth, Passport
+Technology used: ExpressJS, NodeJs, Mongoose, MongoDB, MongoDB Atlas, Google People API, OAuth, Passport
 
 ## Index Page & Logging in
 1. The initial page is the index which shows all the created builds in the database. I want the user, even if not logged in, to still be able to see the builds and view them individually.
@@ -70,3 +70,7 @@ If the user is logged in they are able to edit and delete only their own comment
 If not logged in the "edit" and "delete" buttons will not appear.
 </figcaption>
 </figure>
+
+## IceBox Features
+1. images, screenshots for builds
+2. Rating system. 
