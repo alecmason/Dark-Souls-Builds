@@ -1,34 +1,72 @@
-# passport-boilerplate
+# Alec Jones" Project 2 - Dark Souls Inspired Build Database
 
+The purpose of the web applicatino is to be a database for RPG "builds" inspired by the video game series Dark Souls.
 
-This is your passport boilerplate.
+Technology used: ExpressJS, NodeJs, Mongoose, MongoDB, Google People API, OAuth, Passport
 
-## Setup 
+## Index Page & Logging in
+1. The initial page is the index which shows all the created builds in the database. I want the user, even if not logged in, to still be able to see the builds and view them individually.
+2. A User who is not logged in does not have access to creating a build or commenting.
+<figure>
+<img src="https://i.imgur.com/4az9NNG.png?1">
+<figcaption align="center">
+Index page, user is not logged in
+</figcaption>
+</figure>
 
-1. Clone the repo
-2. Rename the folder to your Project
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+<figure>
+<img src="https://i.imgur.com/0Ta2mUg.png?1">
+<figcaption align="center">
+Index page, user is logged in
+</figcaption>
+</figure>
 
+## View a created build
+1. clicking the "View" button next to a build takes the user to a detailed page of the build.
+2. If the user is not logged in they are unable to comment, edit their own comment, or delete their own comment.
+<figure>
+<img src="https://i.imgur.com/uOPc3Av.png?1">
+<figcaption align="center">
+The "Show" page of an individual build with the user not logged in
+</figcaption>
+</figure>
 
-#### Setup your git repo
-1. in the project root `git init`
-2. `git add .` to add all the starter code
-3. `git commit -m "setup boilerplate"` 
-4. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-5. copy the remote address
-6. In your terminal add the remote `git remote add origin yourGithubRepo'sAddressGoesHere`
-7. `git pull origin master` If a screen pulls up asking you to do something just press `:q` and then `enter` (thats vim btw :) )
-8. `git push origin master`
+3. If the user in logged in their are able to comment, edit their own comment, and delete their own comment.
 
-#### Setup your login
+<figure>
+<img src="https://i.imgur.com/wjCLOtX.png?1">
+<figcaption align="center">
+The "Show" page of an individual build with the user logged in. The "Edit" and "Delete" buttons now appear.
+</figcaption>
+</figure>
 
-0. Setup your database connection string
-1. Then Setup Your User Model, 
-2. Follow the steps from the lesson plan to get your Google login credentials for your `.env` file (create the file if you haven't), or you can just copy the ones from earlier if you want to reuse them.
-3. Setup the Code in your config passport 
-4. Setup your callback routes in your `routes/index`
-5. Setup a view and test your login!
+## Create a new build
+1. To create a new build and add it to the database the user must be logged in.
+2. If a user who is not logged in clicks the "Create a Build" link, it will redirect them to the Google log in page.
+3. Once logged in they will be able to go to the "Create a Build" page
 
-#### Make a commit 
+<figure>
+<img src="https://i.imgur.com/N5RySDe.png?1">
+<figcaption align="center">
+Once logged in the user is now able to create and new build and add it to the database.
+</figcaption>
+</figure>
 
-```git commit -m "setup up oauth and User Model"```
+## Add a comment about an individual build, Editing and Deleting your own comment
+1. To comment on a build the user must be logged in. They will be redirected to the current page otherwise.
+2. Only a user who is logged through Google may comment.
+3. A logged in user may only edit and delete their own comments.
+
+<figure>
+<img src="https://i.imgur.com/yZ8y6iD.png?1">
+<figcaption align="center">
+If the user is logged in they are able to edit and delete only their own comment.
+</figcaption>
+</figure>
+
+<figure>
+<img src="https://i.imgur.com/da2Kka2.png?1">
+<figcaption align="center">
+If not logged in the "edit" and "delete" buttons will not appear.
+</figcaption>
+</figure>
