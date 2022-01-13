@@ -4,7 +4,7 @@ The purpose of the web application is to be a database for RPG "builds" inspired
 
 [Check it out here!](https://project-2-dark-souls-builds.herokuapp.com/builds)
 
-Technology used: ExpressJS, NodeJs, Mongoose, MongoDB, MongoDB Atlas, Google People API, OAuth, Passport
+Technology used: ExpressJS, NodeJs, Mongoose, MongoDB, MongoDB Atlas, Google People API, OAuth, Passport, Heroku
 
 ## Index Page & Logging in
 1. The initial page is the index which shows all the created builds in the database. I want the user, even if not logged in, to still be able to see the builds and view them individually.
