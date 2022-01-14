@@ -1,10 +1,10 @@
 var router = require('express').Router();
 var buildsCtrl = require('../controllers/builds');
 
-router.get('/builds', buildsCtrl.index);
-router.get('/builds/new', isLoggedIn, buildsCtrl.new);
-router.post('/builds', isLoggedIn, buildsCtrl.create);
-router.get('/builds/:id', buildsCtrl.show);
+router.get('/', buildsCtrl.index);
+router.get('/new', isLoggedIn, buildsCtrl.new);
+router.post('/', isLoggedIn, buildsCtrl.create);
+router.get('/:id', buildsCtrl.show);
 
 
 // Authorizing the user to use a route
