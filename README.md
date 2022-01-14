@@ -76,3 +76,5 @@ If not logged in the "edit" and "delete" buttons will not appear.
 ## IceBox Features
 1. images, screenshots for builds
 2. Rating system. 
+3. searching & sorting.
+4. user profiles
